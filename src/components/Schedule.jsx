@@ -1,19 +1,23 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { buildMonth, months, weekdays } from "../utils/calendar";
 
-export default function Schedule({
-  monthCursor,
-  setMonthCursor,
-  selectedDate,
-  setSelectedDate,
-  currentCourseTitle,
-  onReserve,
-  notice,
-}) {
+const Schedule = forwardRef(function Schedule(
+  {
+    monthCursor,
+    setMonthCursor,
+    selectedDate,
+    setSelectedDate,
+    currentCourseTitle,
+    onReserve,
+    notice,
+    saving,
+  },
+  ref
+) {
   const monthCells = buildMonth(monthCursor);
 
   return (
-    <section id="schedule" className="container">
+    <section id="schedule" ref={ref} className="container schedule-section">
       <div className="panel">
         <div className="cal-head">
           <h2 style={{ margin: 0 }}>Pick a Workshop Date</h2>
@@ -70,7 +74,14 @@ export default function Schedule({
               <span className="chip">Date: {selectedDate.toISOString().split("T")[0]}</span>
             )}
           </div>
-          <button className="btn brand" onClick={onReserve}>Reserve this date</button>
+          <button
+            className="btn brand"
+            onClick={onReserve}
+            disabled={!selectedDate || saving}
+            style={!selectedDate || saving ? { opacity: 0.6, cursor: "not-allowed" } : undefined}
+          >
+            {saving ? "Reserving..." : "Reserve this date"}
+          </button>
         </div>
 
         {notice && (
@@ -83,5 +94,6 @@ export default function Schedule({
       </div>
     </section>
   );
-}
+});
 
+export default Schedule;

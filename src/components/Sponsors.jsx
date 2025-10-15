@@ -3,11 +3,11 @@ import React from "react";
 const sponsors = [
   { name: "SAP", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg" },
   { name: "Siemens", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Siemens_AG_logo.svg/960px-Siemens_AG_logo.svg.png" },
-  { name: "Ericsson", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Ericsson_logo.svg" },
+  { name: "Cognizant", logo: "https://rigacoding.lv/wp-content/uploads/2019/06/cognizant-450x96.png" },
   { name: "Spotify", logo: "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" },
-  { name: "Nokia", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0c/Nokia_wordmark.svg" },
-  { name: "Accenture", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Accenture.svg" },
-  { name: "Capgemini", logo: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Capgemini_2017_logo.svg" }
+  { name: "Tieto", logo: "https://rigacoding.lv/wp-content/uploads/2019/06/tieto-450x151.png" },
+  { name: "Deloitte", logo: "https://rigacoding.lv/wp-content/uploads/2019/06/deloitte-450x85.png" },
+  { name: "Scandiweb", logo: "https://rigacoding.lv/wp-content/uploads/2019/07/scandiweb_logo-1.png" }
 ];
 
 export default function Sponsors() {

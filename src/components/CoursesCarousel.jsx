@@ -1,7 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import CourseDetails from "./CourseDetails";
+import courseDetails from "../data/courseDetails";
 
-export default function CoursesCarousel({ courses, index, setIndex, onEnroll }) {
+export default function CoursesCarousel({ courses, index, setIndex, onBook }) {
   const trackRef = useRef(null);
+  const [expandedIndex, setExpandedIndex] = useState(null);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -12,35 +15,53 @@ export default function CoursesCarousel({ courses, index, setIndex, onEnroll }) 
     track.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
   }, [index]);
 
+  const handleToggleDetails = (cardIndex) => {
+    setIndex(cardIndex);
+    setExpandedIndex((prev) => (prev === cardIndex ? null : cardIndex));
+  };
+
   return (
     <section id="courses" className="container carousel">
-      <h2 style={{ margin: "0 0 12px" }}>Popular Front‑End Courses</h2>
+      <h2 style={{ margin: "0 0 12px" }}>Popular Front-End Courses</h2>
       <div ref={trackRef} className="track">
-        {courses.map((c, i) => (
-          <article key={c.id} className="card" onMouseEnter={() => setIndex(i)}>
-            <div className="cover" style={{ backgroundImage: `url(${c.cover})` }} />
-            <div className="body">
-              <h3>{c.title}</h3>
-              <div className="meta">
-                <span className="chip">{c.level}</span>
-                <span className="chip">Duration: 4 weeks</span>
+        {courses.map((course, courseIndex) => {
+          const isExpanded = expandedIndex === courseIndex;
+          const details = courseDetails[course.id];
+          return (
+            <article
+              key={course.id}
+              className={`card ${isExpanded ? "card-expanded" : ""}`}
+              onMouseEnter={() => setIndex(courseIndex)}
+            >
+              <div className="cover" style={{ backgroundImage: `url(${course.cover})` }} />
+              <div className="body">
+                <h3>{course.title}</h3>
+                <div className="meta">
+                  <span className="chip">{course.level}</span>
+                  <span className="chip">Duration: 4 weeks</span>
+                </div>
+                <p style={{ opacity: 0.85 }}>{course.blurb}</p>
+                <div style={{ display: "flex", gap: 10, marginTop: 14 }}>
+                  <button className="btn brand" onClick={() => onBook && onBook(courseIndex)}>
+                    Book now
+                  </button>
+                  <button className="btn" onClick={() => handleToggleDetails(courseIndex)}>
+                    {isExpanded ? "Hide details" : "Details"}
+                  </button>
+                </div>
+                {isExpanded && <CourseDetails details={details} />}
               </div>
-              <p style={{ opacity: 0.85 }}>{c.blurb}</p>
-              <div style={{ display: "flex", gap: 10, marginTop: 14 }}>
-                <button className="btn brand" onClick={onEnroll}>Book now</button>
-                <button className="btn" onClick={() => setIndex(i)}>Details</button>                
-              </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
       <div className="dots">
-        {courses.map((_, i) => (
+        {courses.map((_, dotIndex) => (
           <button
-            key={i}
-            className={`dot ${index === i ? "active" : ""}`}
-            aria-label={`Slide ${i + 1}`}
-            onClick={() => setIndex(i)}
+            key={dotIndex}
+            className={`dot ${index === dotIndex ? "active" : ""}`}
+            aria-label={`Slide ${dotIndex + 1}`}
+            onClick={() => setIndex(dotIndex)}
           />
         ))}
       </div>

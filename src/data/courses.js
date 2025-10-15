@@ -24,12 +24,12 @@ const courseCatalog = [
     blurb: "Master async, performance, patterns & architecture.",
   },
   {
-    id: "js-advanced",
+    id: "database-admin",
     title: "Database Administration",
     level: "Intermediate",
     cover:
       "https://images.unsplash.com/photo-1633412802994-5c058f151b66?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=880",
-    blurb: "Master async, performance, patterns & architecture.",
+    blurb: "Design resilient schemas, tune performance, and automate backups.",
   },
   {
     id: "devops-engineer",
@@ -37,7 +37,7 @@ const courseCatalog = [
     level: "Intermediate",
     cover:
       "https://images.unsplash.com/photo-1667372335962-5fd503a8ae5b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1332",
-    blurb: "Master async, performance, patterns & architecture.",
+    blurb: "Integrate CI/CD, observability, and automation for faster releases.",
   },
  {
     id: "cloud-engineer",
@@ -45,7 +45,7 @@ const courseCatalog = [
     level: "Intermediate",
     cover:
       "https://images.unsplash.com/photo-1667984390538-3dea7a3fe33d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1332",
-    blurb: "Master async, performance, patterns & architecture.",
+    blurb: "Deploy secure, scalable workloads across AWS, Azure, and GCP.",
   },
 
 ];

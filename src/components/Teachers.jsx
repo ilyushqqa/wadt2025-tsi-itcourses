@@ -2,13 +2,13 @@ import React from "react";
 
 
 const teachers = [
-{ name: "Alice Johnson", profession: "Frontend Developer", image: "https://randomuser.me/api/portraits/women/1.jpg" },
-{ name: "Brian Smith", profession: "UX/UI Designer", image: "https://randomuser.me/api/portraits/men/2.jpg" },
-{ name: "Catherine Lee", profession: "React Instructor", image: "https://randomuser.me/api/portraits/women/3.jpg" },
-{ name: "Daniel Brown", profession: "JavaScript Expert", image: "https://randomuser.me/api/portraits/men/4.jpg" },
-{ name: "Elena Martinez", profession: "Web Design Coach", image: "https://randomuser.me/api/portraits/women/5.jpg" },
-{ name: "Frank Miller", profession: "Full-Stack Developer", image: "https://randomuser.me/api/portraits/men/6.jpg" },
-{ name: "Grace Taylor", profession: "Project Manager", image: "https://randomuser.me/api/portraits/women/7.jpg" }
+{ name: "Alice Johnson", profession: "Frontend Developer", image: "https://randomuser.me/api/portraits/women/69.jpg" },
+{ name: "Brian Smith", profession: "UX/UI Designer", image: "https://randomuser.me/api/portraits/men/14.jpg" },
+{ name: "Catherine Lee", profession: "React Instructor", image: "https://randomuser.me/api/portraits/women/18.jpg" },
+{ name: "Daniel Brown", profession: "JavaScript Expert", image: "https://randomuser.me/api/portraits/men/69.jpg" },
+{ name: "Elena Martinez", profession: "Web Design Coach", image: "https://randomuser.me/api/portraits/women/98.jpg" },
+{ name: "Frank Miller", profession: "Full-Stack Developer", image: "https://randomuser.me/api/portraits/men/24.jpg" },
+{ name: "Grace Taylor", profession: "Project Manager", image: "https://randomuser.me/api/portraits/women/53.jpg" }
 ];
 
 

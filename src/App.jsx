@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "./lib/firebase";
 
@@ -21,6 +21,22 @@ export default function App() {
   const [selectedDate, setSelectedDate] = useState(null);
   const [notice, setNotice] = useState("");
   const [saving, setSaving] = useState(false);
+  const [selectedCourseIndex, setSelectedCourseIndex] = useState(0);
+  const scheduleRef = useRef(null);
+
+  const scrollToSchedule = () => {
+    if (scheduleRef.current) {
+      scheduleRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const handleBookNow = (courseIndex) => {
+    setCarIndex(courseIndex);
+    setSelectedCourseIndex(courseIndex);
+    setSelectedDate(null);
+    setNotice("");
+    scrollToSchedule();
+  };
 
   const enroll = async () => {
     if (!selectedDate) {
@@ -30,7 +46,7 @@ export default function App() {
     setSaving(true);
     try {
       await addDoc(collection(db, "enrollments"), {
-        course: courseCatalog[carIndex].id,
+        course: courseCatalog[selectedCourseIndex].id,
         date: selectedDate.toISOString().split("T")[0],
         ts: serverTimestamp(),
       });
@@ -52,16 +68,17 @@ export default function App() {
         courses={courseCatalog}
         index={carIndex}
         setIndex={setCarIndex}
-        onEnroll={enroll}
+        onBook={handleBookNow}
       />
       <Teachers />
       <Sponsors/>
       <Schedule
+        ref={scheduleRef}
         monthCursor={monthCursor}
         setMonthCursor={setMonthCursor}
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
-        currentCourseTitle={courseCatalog[carIndex].title}
+        currentCourseTitle={courseCatalog[selectedCourseIndex].title}
         onReserve={enroll}
         notice={notice}
         saving={saving}
