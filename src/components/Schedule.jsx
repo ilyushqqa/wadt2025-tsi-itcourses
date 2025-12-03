@@ -16,6 +16,8 @@ const Schedule = forwardRef(function Schedule(
 ) {
   const monthCells = buildMonth(monthCursor);
 
+  const reserveDisabled = !selectedDate || !currentCourseTitle || saving;
+
   return (
     <section id="schedule" ref={ref} className="container schedule-section">
       <div className="panel">
@@ -26,7 +28,7 @@ const Schedule = forwardRef(function Schedule(
               className="btn"
               onClick={() => setMonthCursor((d) => new Date(d.getFullYear(), d.getMonth() - 1, 1))}
             >
-              ◀ Prev
+              Prev
             </button>
             <div className="chip">
               {months[monthCursor.getMonth()]} {monthCursor.getFullYear()}
@@ -35,7 +37,7 @@ const Schedule = forwardRef(function Schedule(
               className="btn"
               onClick={() => setMonthCursor((d) => new Date(d.getFullYear(), d.getMonth() + 1, 1))}
             >
-              Next ▶
+              Next
             </button>
           </div>
         </div>
@@ -69,7 +71,7 @@ const Schedule = forwardRef(function Schedule(
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 14 }}>
           <div className="legend">
             <span className="chip">Course:</span>
-            <strong>{currentCourseTitle}</strong>
+            <strong>{currentCourseTitle || "Select a course"}</strong>
             {selectedDate && (
               <span className="chip">Date: {selectedDate.toISOString().split("T")[0]}</span>
             )}
@@ -77,8 +79,8 @@ const Schedule = forwardRef(function Schedule(
           <button
             className="btn brand"
             onClick={onReserve}
-            disabled={!selectedDate || saving}
-            style={!selectedDate || saving ? { opacity: 0.6, cursor: "not-allowed" } : undefined}
+            disabled={reserveDisabled}
+            style={reserveDisabled ? { opacity: 0.6, cursor: "not-allowed" } : undefined}
           >
             {saving ? "Reserving..." : "Reserve this date"}
           </button>

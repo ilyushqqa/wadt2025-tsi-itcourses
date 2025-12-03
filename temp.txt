@@ -57,7 +57,7 @@ export default function Signup() {
             <input className="input" placeholder="Your name (optional)" value={name} onChange={(e) => setName(e.target.value)} />
             <div style={{ display: "grid", gap: 12, gridTemplateColumns: "1fr min-content" }}>
               <input className="input" type="email" required placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} />
-              <button className="btn brand" disabled={loading} type="submit">{loading ? "Sending�?�" : "Notify me"}</button>
+              <button className="btn brand" disabled={loading} type="submit">{loading ? "Sending…" : "Notify me"}</button>
             </div>
           </div>
           {notice && (
@@ -68,10 +68,10 @@ export default function Signup() {
         </form>
 
         <div>
-          <h3 style={{ margin: "8px 0 10px" }}>Latest signups (live from Firebase)</h3>
+          <h3 style={{ margin: "8px 0 10px" }}>Latest sign‑ups (live from Firebase)</h3>
           <ul className="list">
             {leads.length === 0 && (
-              <li><span>No sign'ups yet. Be the first!</span></li>
+              <li><span>No sign‑ups yet. Be the first!</span></li>
             )}
             {leads.slice(0, 6).map((row) => (
               <li key={row.id}>
@@ -87,3 +87,4 @@ export default function Signup() {
     </section>
   );
 }
+
